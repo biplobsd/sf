@@ -1,98 +1,110 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sf/features/home/ui/view_model/get_categories_view_model.dart';
 
 import '../../../../theme/app_theme.dart';
 import '../../../../theme/gaps.dart';
+import 'banner_shimmer.dart';
+import 'categories_shimmer.dart';
 import 'section_header.dart';
 
-class CategoryItem {
-  final String name;
-  final String emoji;
-  final Color backgroundColor;
-
-  CategoryItem({
-    required this.name,
-    required this.emoji,
-    required this.backgroundColor,
-  });
-}
-
-class CategoriesSection extends StatelessWidget {
+class CategoriesSection extends ConsumerStatefulWidget {
   const CategoriesSection({super.key});
 
   @override
+  ConsumerState<CategoriesSection> createState() => _CategoriesSectionState();
+}
+
+class _CategoriesSectionState extends ConsumerState<CategoriesSection> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(getCategoriesViewModelProvider.notifier).getCategoriesList();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final List<CategoryItem> categories = [
-      CategoryItem(
-          name: 'All', emoji: '🍽️', backgroundColor: Color(0xFFFFF3E0)),
-      CategoryItem(
-          name: 'Coffee', emoji: '☕', backgroundColor: Color(0xFFEFEBE9)),
-      CategoryItem(
-          name: 'Drink', emoji: '🥤', backgroundColor: Color(0xFFE8F5E8)),
-      CategoryItem(
-          name: 'Fast Food', emoji: '🍔', backgroundColor: Color(0xFFFFE8E8)),
-      CategoryItem(
-          name: 'Cake', emoji: '🍰', backgroundColor: Color(0xFFF3E5F5)),
-      CategoryItem(
-          name: 'Sushi', emoji: '🍣', backgroundColor: Color(0xFFE0F2F1)),
-      CategoryItem(
-          name: 'Pizza', emoji: '🍕', backgroundColor: Color(0xFFFFF8E1)),
-      CategoryItem(
-          name: 'Salad', emoji: '🥗', backgroundColor: Color(0xFFE8F5E8)),
-    ];
+    final asyncValue = ref.watch(getCategoriesViewModelProvider);
 
     return SliverToBoxAdapter(
-        child: Column(
-      children: [
-        SectionHeader(
-          title: "Categories",
-          onPressedViewAll: () {},
-        ),
-        SizedBox(
-          height: 80,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: categories.length,
-            itemBuilder: (context, index) {
-              final category = categories[index];
-              return SizedBox(
-                width: 70,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.1),
-                            blurRadius: 4,
-                            offset: Offset(0, 2),
+      child: asyncValue.when(
+        data: (state) {
+          if (state.data.isEmpty) {
+            return CategoriesShimmer();
+          }
+          final categories = state.data;
+
+          return Column(
+            children: [
+              SectionHeader(
+                title: "Categories",
+                onPressedViewAll: () {},
+              ),
+              SizedBox(
+                height: 80,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    final category = categories[index];
+                    return SizedBox(
+                      width: 70,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withValues(alpha: 0.15),
+                                  blurRadius: 4,
+                                  offset: Offset(0, 2),
+                                ),
+                              ],
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Center(
+                                child: CachedNetworkImage(
+                                  imageUrl: category.imageFullUrl,
+                                  fit: BoxFit.cover,
+                                  placeholder: (context, url) => BannerShimmer(
+                                    withOutMargin: true,
+                                  ),
+                                  errorWidget: (context, url, error) =>
+                                      BannerShimmer(
+                                    withOutMargin: true,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          gap0_5,
+                          Text(
+                            category.name,
+                            style: AppTheme.titleExtraTiny10,
+                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
-                      child: Center(
-                        child: Text(
-                          category.emoji,
-                          style: TextStyle(fontSize: 24),
-                        ),
-                      ),
-                    ),
-                    gap0_5,
-                    Text(
-                      category.name,
-                      style: AppTheme.titleExtraTiny10,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                    );
+                  },
                 ),
-              );
-            },
-          ),
-        ),
-      ],
-    ));
+              ),
+            ],
+          );
+        },
+        loading: () => CategoriesShimmer(),
+        error: (error, stack) => Container(),
+      ),
+    );
   }
 }
