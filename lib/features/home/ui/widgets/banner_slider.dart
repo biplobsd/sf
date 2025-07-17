@@ -7,14 +7,6 @@ import 'package:sf/features/home/ui/view_model/get_banners_view_model.dart';
 import '../../../../theme/gaps.dart';
 import 'banner_shimmer.dart';
 
-class BannerItem {
-  final String image;
-
-  BannerItem({
-    required this.image,
-  });
-}
-
 class BannerSlider extends ConsumerStatefulWidget {
   const BannerSlider({super.key});
 

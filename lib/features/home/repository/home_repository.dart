@@ -6,6 +6,7 @@ import '../model/banners.dart';
 import '../model/campaign.dart';
 import '../model/category.dart';
 import '../model/products.dart';
+import '../model/restaurant.dart';
 
 part 'home_repository.g.dart';
 
@@ -65,6 +66,29 @@ class HomeRepository {
     } catch (e) {
       // Handle exceptions as needed
       rethrow;
+    }
+  }
+
+  Future<List<Restaurant>> getRestaurants({
+    int offset = 1,
+    int limit = 10,
+  }) async {
+    try {
+      final response = await _apiClient.get<Map<String, dynamic>>(
+          '/api/v1/restaurants/get-restaurants/all',
+          queryParameters: {
+            'offset': offset,
+            'limit': limit,
+          });
+
+      final restaurants = (response['restaurants'] as List)
+          .map((json) => Restaurant.fromJson(json))
+          .toList();
+
+      return restaurants;
+    } catch (e) {
+      // Handle exceptions as needed
+      return [];
     }
   }
 }
