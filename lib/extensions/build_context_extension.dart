@@ -29,21 +29,21 @@ extension ThemeModeExtension on BuildContext {
         scaffoldBackgroundColor: AppColors.mono0,
         colorScheme: Theme.of(this).colorScheme.copyWith(
               brightness: Brightness.light,
-              primary: AppColors.blueberry100,
+              primary: AppColors.watermelon100,
               error: AppColors.rambutan100,
-              surface: AppColors.blueberry100.withAlpha(30), // Surface tint
+              surface: AppColors.watermelon100.withAlpha(30), // Surface tint
             ),
         textTheme: Theme.of(this).textTheme.apply(
               bodyColor: AppColors.mono100,
             ),
-        primaryColor: AppColors.blueberry100,
+        primaryColor: AppColors.watermelon100,
         filledButtonTheme: FilledButtonThemeData(
           style: ButtonStyle(
             backgroundColor:
-                WidgetStateProperty.all(AppColors.blueberry100.withAlpha(30)),
+                WidgetStateProperty.all(AppColors.watermelon100.withAlpha(30)),
             overlayColor: WidgetStateProperty.resolveWith(
               (states) => states.contains(WidgetState.pressed)
-                  ? AppColors.blueberry100
+                  ? AppColors.watermelon100
                   : null,
             ),
             shape: WidgetStateProperty.all(
@@ -52,7 +52,7 @@ extension ThemeModeExtension on BuildContext {
           ),
         ),
         buttonTheme: ButtonThemeData(
-          buttonColor: AppColors.blueberry100,
+          buttonColor: AppColors.watermelon100,
           textTheme: ButtonTextTheme.primary,
         ),
         inputDecorationTheme: InputDecorationTheme(
@@ -82,21 +82,21 @@ extension ThemeModeExtension on BuildContext {
         canvasColor: AppColors.mono100,
         colorScheme: Theme.of(this).colorScheme.copyWith(
               brightness: Brightness.dark,
-              primary: AppColors.blueberry100,
+              primary: AppColors.watermelon100,
               error: AppColors.rambutan100,
-              surface: AppColors.blueberry100.withAlpha(30),
+              surface: AppColors.watermelon100.withAlpha(30),
             ),
         textTheme: Theme.of(this).textTheme.apply(
               bodyColor: AppColors.mono20,
             ),
-        primaryColor: AppColors.blueberry100,
+        primaryColor: AppColors.watermelon100,
         filledButtonTheme: FilledButtonThemeData(
           style: ButtonStyle(
             backgroundColor:
-                WidgetStateProperty.all(AppColors.blueberry100.withAlpha(30)),
+                WidgetStateProperty.all(AppColors.watermelon100.withAlpha(30)),
             overlayColor: WidgetStateProperty.resolveWith(
               (states) => states.contains(WidgetState.pressed)
-                  ? AppColors.blueberry100
+                  ? AppColors.watermelon100
                   : null,
             ),
             shape: WidgetStateProperty.all(
@@ -107,7 +107,7 @@ extension ThemeModeExtension on BuildContext {
           ),
         ),
         buttonTheme: ButtonThemeData(
-          buttonColor: AppColors.blueberry100,
+          buttonColor: AppColors.watermelon100,
           textTheme: ButtonTextTheme.primary,
         ),
         inputDecorationTheme: InputDecorationTheme(
@@ -115,7 +115,7 @@ extension ThemeModeExtension on BuildContext {
           fillColor: Colors.transparent,
           hintStyle: TextStyle(color: AppColors.mono60),
           // Hint text color
-          labelStyle: TextStyle(color: AppColors.blueberry100),
+          labelStyle: TextStyle(color: AppColors.watermelon100),
           // Label color
           helperStyle: TextStyle(color: AppColors.mono80),
           // Helper text color

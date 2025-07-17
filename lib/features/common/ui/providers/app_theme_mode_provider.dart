@@ -14,7 +14,7 @@ class AppThemeMode extends _$AppThemeMode {
     final currentMode = prefs.getString(Constants.themeModeKey);
     return ThemeMode.values.firstWhere(
       (value) => currentMode == value.name,
-      orElse: () => ThemeMode.system,
+      orElse: () => ThemeMode.light, // Default to light mode if not found
     );
   }
 

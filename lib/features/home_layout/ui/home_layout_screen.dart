@@ -4,8 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../extensions/build_context_extension.dart';
 import '../../../theme/app_colors.dart';
-import '../../../theme/app_theme.dart';
-import '../../../theme/gaps.dart';
 import '../../home/ui/home_screen.dart';
 
 class HomeLayoutScreen extends ConsumerStatefulWidget {
@@ -50,8 +48,7 @@ class _HomeLayoutScreenState extends ConsumerState<HomeLayoutScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final selectedColor =
-        context.isDarkMode ? AppColors.blueberry100 : AppColors.blueberry100;
+    final selectedColor = AppColors.watermelon100;
     final unselectedColor =
         context.isDarkMode ? AppColors.mono40 : AppColors.mono60;
     final borderColor = context.isDarkMode
@@ -59,30 +56,64 @@ class _HomeLayoutScreenState extends ConsumerState<HomeLayoutScreen> {
         : AppColors.blueberry20.withAlpha(150);
     final backgroundColor =
         context.isDarkMode ? AppColors.mono100 : AppColors.mono0;
+
     return Scaffold(
       floatingActionButton: Container(
-        padding: EdgeInsets.symmetric(horizontal: 3),
+        height: 60.h,
+        width: 60.w,
+        margin: EdgeInsets.only(top: 15.h),
+        child: FloatingActionButton(
+          elevation: 0,
+          onPressed: () => _changePage(2), // Navigate to Cart
+          backgroundColor: selectedColor,
+          shape: CircleBorder(),
+          child: Container(
+            padding: EdgeInsets.all(10.w),
+            decoration: BoxDecoration(
+              color: selectedColor,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.shopping_cart,
+              color: backgroundColor,
+              size: 28.sp,
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: Container(
+        height: 60.h,
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(25.r),
-          border: Border.all(
-            color: borderColor,
-            width: 2,
+          border: Border(
+            top: BorderSide(
+              color: borderColor,
+              width: 1.w,
+            ),
           ),
         ),
         child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          spacing: 10.sp,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _buildNavItem(0, Icons.home, Icons.home_outlined, 'menu_home',
+            _buildNavItem(0, Icons.home, Icons.home_outlined, selectedColor,
+                unselectedColor),
+            _buildNavItem(1, Icons.favorite, Icons.favorite_border,
                 selectedColor, unselectedColor),
-            _buildNavItem(1, Icons.person_2, Icons.person_2_outlined,
-                'menu_profile', selectedColor, unselectedColor),
+            Opacity(
+              opacity: 0,
+              child: _buildCartItem(
+                selectedColor,
+                backgroundColor,
+              ),
+            ),
+            _buildNavItem(3, Icons.receipt_long, Icons.receipt_long_outlined,
+                selectedColor, unselectedColor),
+            _buildNavItem(4, Icons.menu, Icons.menu_outlined, selectedColor,
+                unselectedColor),
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: PageView(
         controller: _pageController,
         pageSnapping: true,
@@ -93,54 +124,52 @@ class _HomeLayoutScreenState extends ConsumerState<HomeLayoutScreen> {
         },
         children: const [
           HomeScreen(),
+          // FavoritesScreen(),
+          // CartScreen(),
+          // OrdersScreen(),
+          // MenuScreen(),
         ],
       ),
     );
   }
 
-  Widget _buildNavItem(
-      int index,
-      IconData selectedIcon,
-      IconData unselectedIcon,
-      String label,
-      Color selectedColor,
-      Color unselectedColor) {
+  Widget _buildNavItem(int index, IconData selectedIcon,
+      IconData unselectedIcon, Color selectedColor, Color unselectedColor) {
     final isSelected = _currentIndex == index;
 
-    return Container(
-      margin: EdgeInsets.all(5.sp),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(20.r),
-          onTap: () => _changePage(index),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 8.h),
-            decoration: BoxDecoration(
-              color: isSelected
-                  ? selectedColor.withAlpha(20)
-                  : const Color.fromARGB(0, 83, 34, 34),
-              borderRadius: BorderRadius.circular(20.r),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Icon(
-                  isSelected ? selectedIcon : unselectedIcon,
-                  color: isSelected ? selectedColor : unselectedColor,
-                  size: 28.sp,
-                ),
-                gap0_5,
-                Text(
-                  label,
-                  style: AppTheme.titleTiny12.copyWith(
-                    color: isSelected ? selectedColor : unselectedColor,
-                  ),
-                ),
-              ],
-            ),
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(20.r),
+        onTap: () => _changePage(index),
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
+          child: Icon(
+            isSelected ? selectedIcon : unselectedIcon,
+            color: isSelected ? selectedColor : unselectedColor,
+            size: 28.sp,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCartItem(Color selectedColor, Color backgroundColor) {
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(30.r),
+        onTap: () => _changePage(2),
+        child: Container(
+          padding: EdgeInsets.all(12.w),
+          decoration: BoxDecoration(
+            color: selectedColor,
+            shape: BoxShape.circle,
+          ),
+          child: Icon(
+            Icons.shopping_cart,
+            color: backgroundColor,
+            size: 24.sp,
           ),
         ),
       ),
