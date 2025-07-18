@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'providers/home_data_refetch_provider.dart';
 import 'widgets/banner_slider.dart';
 import 'widgets/categories_section.dart';
 import 'widgets/food_campaign_section.dart';
@@ -8,14 +10,14 @@ import 'widgets/popular_food_nearby_section.dart';
 import 'widgets/restaurants_layout.dart';
 import 'widgets/section_header.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   final ScrollController _scrollController = ScrollController();
 
   @override
@@ -27,25 +29,27 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFDFDFD),
-      body: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          HomeAppBar(),
-          BannerSlider(),
-          CategoriesSection(),
-          PopularFoodNearbySection(),
-          FoodCampaignSection(),
-          SliverToBoxAdapter(
-            child: SectionHeader(
-              title: "Restaurants",
-              onPressedViewAll: () {},
+      body: RefreshIndicator(
+        onRefresh: ref.read(homeDataRefetchProviderProvider.notifier).now,
+        child: CustomScrollView(
+          controller: _scrollController,
+          slivers: [
+            HomeAppBar(),
+            BannerSlider(),
+            CategoriesSection(),
+            PopularFoodNearbySection(),
+            FoodCampaignSection(),
+            SliverToBoxAdapter(
+              child: SectionHeader(
+                title: "Restaurants",
+                onPressedViewAll: () {},
+              ),
             ),
-          ),
-          RestaurantsLayout(
-            scrollController: _scrollController,
-          ),
-        ],
+            RestaurantsLayout(
+              scrollController: _scrollController,
+            ),
+          ],
+        ),
       ),
     );
   }

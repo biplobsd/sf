@@ -3,5 +3,5 @@ class Routes {
 
   static const splash = '/';
   static const home = '/home';
-  static const about = '/about';
+  static const underConstruction = '/under-construction';
 }

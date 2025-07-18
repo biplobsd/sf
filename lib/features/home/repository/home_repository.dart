@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../../constants/uris.dart';
 import '../../common/remote/api_client.dart';
 import '../model/banners.dart';
 import '../model/campaign.dart';
@@ -25,8 +26,7 @@ class HomeRepository {
 
   Future<Banners> getBanners() async {
     try {
-      final response =
-          await _apiClient.get<Map<String, dynamic>>('/api/v1/banners');
+      final response = await _apiClient.get<Map<String, dynamic>>(Uris.banners);
       return Banners.fromJson(response);
     } catch (e) {
       // Handle exceptions as needed
@@ -36,7 +36,7 @@ class HomeRepository {
 
   Future<List<Category>> getCategories() async {
     try {
-      final response = await _apiClient.get<dynamic>('/api/v1/categories');
+      final response = await _apiClient.get<dynamic>(Uris.categories);
       final categories =
           response.map((json) => Category.fromJson(json)).toList();
       return categories.cast<Category>();
@@ -48,8 +48,8 @@ class HomeRepository {
 
   Future<Products> getProducts() async {
     try {
-      final response = await _apiClient
-          .get<Map<String, dynamic>>('/api/v1/products/popular');
+      final response =
+          await _apiClient.get<Map<String, dynamic>>(Uris.popularFoods);
       return Products.fromJson(response);
     } catch (e) {
       // Handle exceptions as needed
@@ -59,7 +59,7 @@ class HomeRepository {
 
   Future<List<Campaign>> getCampaigns() async {
     try {
-      final response = await _apiClient.get<dynamic>('/api/v1/campaigns/item');
+      final response = await _apiClient.get<dynamic>(Uris.campaigns);
       final campaigns =
           response.map((json) => Campaign.fromJson(json)).toList();
       return campaigns.cast<Campaign>();
@@ -74,12 +74,11 @@ class HomeRepository {
     int limit = 10,
   }) async {
     try {
-      final response = await _apiClient.get<Map<String, dynamic>>(
-          '/api/v1/restaurants/get-restaurants/all',
-          queryParameters: {
-            'offset': offset,
-            'limit': limit,
-          });
+      final response = await _apiClient
+          .get<Map<String, dynamic>>(Uris.restaurants, queryParameters: {
+        'offset': offset,
+        'limit': limit,
+      });
 
       final restaurants = (response['restaurants'] as List)
           .map((json) => Restaurant.fromJson(json))

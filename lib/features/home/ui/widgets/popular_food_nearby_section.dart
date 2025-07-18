@@ -8,6 +8,7 @@ import '../../../../theme/gaps.dart';
 import 'banner_shimmer.dart';
 import 'popular_food_nearby_shimmer.dart';
 import 'section_header.dart';
+import 'shimmer_error.dart';
 
 class PopularFoodNearbySection extends ConsumerStatefulWidget {
   const PopularFoodNearbySection({super.key});
@@ -162,7 +163,9 @@ class _PopularFoodNearbySectionState
           );
         },
         loading: () => PopularFoodNearbyShimmer(),
-        error: (error, stack) => Container(),
+        error: (error, stack) => ShimmerError(
+          shimmer: PopularFoodNearbyShimmer(),
+        ),
       ),
     );
   }

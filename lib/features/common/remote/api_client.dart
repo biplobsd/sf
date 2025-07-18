@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../constants/constants.dart';
+import '../../../constants/uris.dart';
 
 part 'api_client.g.dart';
 
@@ -13,7 +14,7 @@ ApiClient apiClient(Ref ref) {
 }
 
 class ApiClient {
-  static const String _baseUrl = 'https://stackfood-admin.6amtech.com';
+  static const String _baseUrl = Uris.base;
   static const int _timeout = 30000; // 30 seconds
 
   late final Dio _dio;

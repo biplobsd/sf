@@ -5,6 +5,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sf/features/home/ui/providers/home_data_refetch_provider.dart';
 
 import '../../../../constants/constants.dart';
 import '../../../../theme/app_colors.dart';
@@ -45,6 +46,10 @@ class _OfflineContainerState extends ConsumerState<OfflineContainer> {
     if (kDebugMode) {
       debugPrint(
           '${Constants.tag} [_OfflineContainerState._updateConnectionStatus] $result => ${_isOffline ? 'offline' : 'online'}');
+    }
+
+    if (!_isOffline) {
+      ref.read(homeDataRefetchProviderProvider.notifier).now();
     }
   }
 

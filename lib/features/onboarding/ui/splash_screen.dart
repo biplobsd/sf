@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../routing/routes.dart';
-import '../../../theme/app_colors.dart';
 import '../../common/ui/widgets/loading_logo.dart';
 
 class SplashScreen extends ConsumerWidget {
@@ -13,9 +12,11 @@ class SplashScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     _checkLoginStatus(ref, context);
     return Scaffold(
-      backgroundColor: AppColors.blueberry100,
       body: Center(
-        child: LoadingLogo(isBlur: false, bgColor: AppColors.blueberry100),
+        child: LoadingLogo(
+          isBlur: false,
+          bgColor: Theme.of(context).scaffoldBackgroundColor,
+        ),
       ),
     );
   }

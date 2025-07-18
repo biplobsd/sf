@@ -8,6 +8,7 @@ import '../../../../theme/gaps.dart';
 import 'banner_shimmer.dart';
 import 'food_campaign_shimmer.dart';
 import 'section_header.dart';
+import 'shimmer_error.dart';
 
 class FoodCampaignSection extends ConsumerStatefulWidget {
   const FoodCampaignSection({super.key});
@@ -241,7 +242,9 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
           );
         },
         loading: () => FoodCampaignShimmer(),
-        error: (error, stack) => Container(),
+        error: (error, stack) => ShimmerError(
+          shimmer: FoodCampaignShimmer(),
+        ),
       ),
     );
   }

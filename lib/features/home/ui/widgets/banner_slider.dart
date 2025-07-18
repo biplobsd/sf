@@ -6,6 +6,7 @@ import 'package:sf/features/home/ui/view_model/get_banners_view_model.dart';
 
 import '../../../../theme/gaps.dart';
 import 'banner_shimmer.dart';
+import 'shimmer_error.dart';
 
 class BannerSlider extends ConsumerStatefulWidget {
   const BannerSlider({super.key});
@@ -132,7 +133,9 @@ class _BannerSliderState extends ConsumerState<BannerSlider> {
           );
         },
         loading: () => BannerShimmer(),
-        error: (error, stack) => Container(),
+        error: (error, stack) => ShimmerError(
+          shimmer: BannerShimmer(),
+        ),
       ),
     );
   }

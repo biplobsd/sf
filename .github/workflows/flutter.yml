@@ -33,7 +33,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          flutter-version: '3.27.1'
+          flutter-version: '3.32.6'
 
       # Step 4: Install dependencies
       - name: Install dependencies

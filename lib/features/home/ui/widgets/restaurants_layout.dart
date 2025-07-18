@@ -58,7 +58,9 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
     widget.scrollController.addListener(_onScroll);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(getRestaurantsViewModelProvider.notifier).getAll();
+      ref.read(getRestaurantsViewModelProvider.notifier).getAll(
+            isReset: true,
+          );
     });
   }
 

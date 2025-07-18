@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../features/common/ui/widgets/custom_snack_bar.dart';
 import '../theme/app_colors.dart';
@@ -26,7 +25,7 @@ extension ThemeModeExtension on BuildContext {
 
   ThemeData get lightTheme => ThemeData.light().copyWith(
         canvasColor: AppColors.mono0,
-        scaffoldBackgroundColor: AppColors.mono0,
+        scaffoldBackgroundColor: Color(0xFFFDFDFD),
         colorScheme: Theme.of(this).colorScheme.copyWith(
               brightness: Brightness.light,
               primary: AppColors.watermelon100,
@@ -152,15 +151,5 @@ extension ThemeModeExtension on BuildContext {
 
   void showErrorSnackBar(String text) {
     ScaffoldMessenger.of(this).showSnackBar(CustomSnackBar.error(text: text));
-  }
-
-  void tryLaunchUrl(String url) async {
-    try {
-      await launchUrl(Uri.parse(url));
-    } catch (e) {
-      if (mounted) {
-        showErrorSnackBar('Cannot open url: $url');
-      }
-    }
   }
 }

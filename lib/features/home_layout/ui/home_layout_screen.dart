@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sf/features/common/ui/under_construction_screen.dart';
+import 'package:sf/features/home_layout/ui/view_model/change_screen_view_model.dart';
 
 import '../../../extensions/build_context_extension.dart';
 import '../../../theme/app_colors.dart';
@@ -56,6 +58,14 @@ class _HomeLayoutScreenState extends ConsumerState<HomeLayoutScreen> {
         : AppColors.blueberry20.withAlpha(150);
     final backgroundColor =
         context.isDarkMode ? AppColors.mono100 : AppColors.mono0;
+
+    ref.listen(changeScreenViewModelProvider, (previous, next) async {
+      if (next is AsyncData) {
+        if (next.value?.index != null) {
+          _changePage(next.value!.index!);
+        }
+      }
+    });
 
     return Scaffold(
       floatingActionButton: Container(
@@ -124,10 +134,10 @@ class _HomeLayoutScreenState extends ConsumerState<HomeLayoutScreen> {
         },
         children: const [
           HomeScreen(),
-          // FavoritesScreen(),
-          // CartScreen(),
-          // OrdersScreen(),
-          // MenuScreen(),
+          UnderConstructionScreen(screenName: "Favorites"),
+          UnderConstructionScreen(screenName: "Cart"),
+          UnderConstructionScreen(screenName: "Orders"),
+          UnderConstructionScreen(screenName: "Settings"),
         ],
       ),
     );

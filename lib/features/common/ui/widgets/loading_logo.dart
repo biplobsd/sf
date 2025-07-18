@@ -6,8 +6,6 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../constants/assets.dart';
 import '../../../../theme/app_colors.dart';
-import '../../../../theme/app_theme.dart';
-import '../../../../theme/gaps.dart';
 
 class LoadingLogo extends StatefulWidget {
   const LoadingLogo({super.key, this.isBlur = true, this.bgColor});
@@ -64,7 +62,7 @@ class _LoadingLogoState extends State<LoadingLogo>
         child: Center(
           child: Container(
             decoration: BoxDecoration(
-              color: AppColors.blueberry100,
+              color: widget.bgColor ?? AppColors.mono100.withAlpha(100),
               shape: BoxShape.circle,
             ),
             child: Stack(
@@ -75,7 +73,7 @@ class _LoadingLogoState extends State<LoadingLogo>
                   child: ScaleTransition(
                     scale: _zoomAnimation,
                     child: Image.asset(
-                      Assets.logo,
+                      Assets.fullLogo,
                       width: 130.sp,
                     ),
                   ),
@@ -90,83 +88,14 @@ class _LoadingLogoState extends State<LoadingLogo>
                       delegates: LottieDelegates(
                         values: [
                           ValueDelegate.color(
-                            const ['**'], // Targets all colors
-                            value: Colors.white,
+                            const ['**'],
+                            value: AppColors.watermelon100,
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      bottom: 30.sp,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 10.sp,
-                            vertical: 5.sp,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.mono0.withAlpha(50),
-                            borderRadius: BorderRadius.circular(10.sp),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Made in Bangladesh",
-                                style: AppTheme.bodySmall12.copyWith(
-                                  color: AppColors.mono0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        gap0_5,
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 10.sp,
-                            vertical: 5.sp,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.mono0.withAlpha(50),
-                            borderRadius: BorderRadius.circular(10.sp),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Developed by",
-                                style: AppTheme.bodySmall12.copyWith(
-                                  color: AppColors.mono0,
-                                ),
-                              ),
-                              gap0_2,
-                              Text(
-                                "SpeedOut Source",
-                                style: AppTheme.bodySmall12.copyWith(
-                                  color: AppColors.mono0,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
               ],
             ),
           ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sf/features/common/ui/under_construction_screen.dart';
 
-import '../features/about/ui/about_screen.dart';
 import '../features/home_layout/ui/home_layout_screen.dart';
 import '../features/onboarding/ui/splash_screen.dart';
 import '../routing/routes.dart';
@@ -77,10 +77,13 @@ final GoRouter router = GoRouter(
           state.slidePage(const HomeLayoutScreen()),
     ),
     GoRoute(
-      path: Routes.about,
-      pageBuilder: (context, state) => state.slidePage(
-        const About(),
-      ),
+      path: Routes.underConstruction,
+      pageBuilder: (context, state) {
+        final screenName = state.uri.queryParameters['screenName'] ?? 'Unknown';
+        return state.slidePage(
+          UnderConstructionScreen(screenName: screenName),
+        );
+      },
     ),
   ],
 );

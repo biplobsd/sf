@@ -10,8 +10,4 @@ class Constants {
 
   // SharedPreferences key
   static const String themeModeKey = 'theme_mode_key';
-
-  static const String shopName = 'SpeedOut Source';
-  static const String shopPhone = '018xxxxxxxx';
-  static const String shopAddress = 'Dhaka, Bangladesh';
 }

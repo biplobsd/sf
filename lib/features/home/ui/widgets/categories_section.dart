@@ -8,6 +8,7 @@ import '../../../../theme/gaps.dart';
 import 'banner_shimmer.dart';
 import 'categories_shimmer.dart';
 import 'section_header.dart';
+import 'shimmer_error.dart';
 
 class CategoriesSection extends ConsumerStatefulWidget {
   const CategoriesSection({super.key});
@@ -103,7 +104,9 @@ class _CategoriesSectionState extends ConsumerState<CategoriesSection> {
           );
         },
         loading: () => CategoriesShimmer(),
-        error: (error, stack) => Container(),
+        error: (error, stack) => ShimmerError(
+          shimmer: CategoriesShimmer(),
+        ),
       ),
     );
   }
