@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sf/features/home/ui/view_model/get_campaigns_view_model.dart';
 
 import '../../../../theme/app_theme.dart';
@@ -47,26 +48,26 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
                 onPressedViewAll: () {},
               ),
               SizedBox(
-                height: 100,
+                height: 100.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: campaigns.length,
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
                   itemBuilder: (context, index) {
                     final food = campaigns[index];
                     return Container(
-                      width: 220,
-                      margin: EdgeInsets.only(right: 16, bottom: 20),
+                      width: 220.w,
+                      margin: EdgeInsets.only(right: 16.w, bottom: 20.h),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(12.r),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withValues(
                               alpha: 0.1,
                             ),
-                            blurRadius: 8,
-                            offset: Offset(0, 4),
+                            blurRadius: 8.r,
+                            offset: Offset(0, 4.h),
                           ),
                         ],
                       ),
@@ -77,15 +78,15 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
                             children: [
                               // Food Image
                               Container(
-                                height: 80,
-                                width: 70,
-                                margin: EdgeInsets.all(3),
+                                height: 80.h,
+                                width: 70.w,
+                                margin: EdgeInsets.all(3.r),
                                 decoration: BoxDecoration(
                                   color: Colors.grey[200],
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.r),
                                 ),
                                 child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(8),
+                                  borderRadius: BorderRadius.circular(8.r),
                                   child: Center(
                                     child: CachedNetworkImage(
                                       imageUrl: food.imageFullUrl,
@@ -106,14 +107,14 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
                               Expanded(
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(
-                                    horizontal: 6,
-                                    vertical: 6,
+                                    horizontal: 6.w,
+                                    vertical: 6.h,
                                   ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
-                                    spacing: 1,
+                                    spacing: 1.h,
                                     children: [
                                       Text(
                                         food.name,
@@ -153,7 +154,7 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
                                                     food.ratingCount.round()
                                                 ? Colors.green
                                                 : Colors.grey[300],
-                                            size: 12,
+                                            size: 12.r,
                                           );
                                         }),
                                       ),
@@ -189,17 +190,17 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
                             alignment: Alignment.topLeft,
                             child: Container(
                               margin: EdgeInsets.only(
-                                top: 16,
+                                top: 16.h,
                               ),
                               padding: EdgeInsets.symmetric(
-                                horizontal: 2,
-                                vertical: 4,
+                                horizontal: 2.w,
+                                vertical: 4.h,
                               ),
                               decoration: BoxDecoration(
                                 color: Colors.green,
                                 borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(5),
-                                  bottomRight: Radius.circular(5),
+                                  topRight: Radius.circular(5.r),
+                                  bottomRight: Radius.circular(5.r),
                                 ),
                               ),
                               child: Text(
@@ -216,7 +217,7 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
                             child: IconButton(
                               style: ButtonStyle(
                                 padding: WidgetStateProperty.all<EdgeInsets>(
-                                  EdgeInsets.all(8),
+                                  EdgeInsets.all(8.r),
                                 ),
                                 minimumSize: WidgetStateProperty.all<Size>(
                                   Size(0, 0),
@@ -228,7 +229,7 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
                               icon: Icon(
                                 Icons.add_outlined,
                                 color: Colors.black,
-                                size: 25,
+                                size: 25.r,
                               ),
                             ),
                           ),

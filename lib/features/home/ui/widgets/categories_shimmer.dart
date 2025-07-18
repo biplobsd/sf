@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sf/features/home/ui/widgets/section_header.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -20,32 +21,32 @@ class CategoriesShimmer extends StatelessWidget {
             onPressedViewAll: () {},
           ),
           SizedBox(
-            height: 80,
+            height: 80.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 5,
               itemBuilder: (context, index) {
                 return SizedBox(
-                  width: 70,
+                  width: 70.w,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: 50,
-                        height: 50,
+                        width: 50.w,
+                        height: 50.h,
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
+                          borderRadius: BorderRadius.circular(12.r),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.black.withValues(alpha: 0.15),
-                              blurRadius: 4,
-                              offset: Offset(0, 2),
+                              blurRadius: 4.r,
+                              offset: Offset(0, 2.h),
                             ),
                           ],
                         ),
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.r),
                           child: Center(
                             child: BannerShimmer(
                               withOutMargin: true,
@@ -55,11 +56,11 @@ class CategoriesShimmer extends StatelessWidget {
                       ),
                       gap0_5,
                       Container(
-                        width: Random().nextInt(20) + 20.0,
-                        height: 10,
+                        width: (Random().nextInt(20) + 20.0).w,
+                        height: 10.h,
                         decoration: BoxDecoration(
                           color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(4.r),
                         ),
                       )
                     ],

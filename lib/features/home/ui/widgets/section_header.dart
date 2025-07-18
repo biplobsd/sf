@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../theme/app_colors.dart';
 import '../../../../theme/app_theme.dart';
@@ -15,7 +16,7 @@ class SectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 6, 16, 6),
+      padding: EdgeInsets.fromLTRB(16.w, 3.h, 16.w, 5.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -26,15 +27,16 @@ class SectionHeader extends StatelessWidget {
           TextButton(
             onPressed: onPressedViewAll,
             style: TextButton.styleFrom(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
               minimumSize: Size(0, 0),
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             child: Text(
               "View All",
-              style: AppTheme.titleExtraSmall14Colored.copyWith(
+              style: AppTheme.titleTiny12.copyWith(
                 decoration: TextDecoration.underline,
-                decorationColor: AppColors.watermelon100,
+                decorationColor: AppColors.watermelon80,
+                color: AppColors.watermelon80,
               ),
             ),
           ),

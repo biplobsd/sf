@@ -11,14 +11,14 @@ class BannerShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommonShimmer(
       child: Container(
-        height: 90,
+        height: 90.h,
         width: double.infinity,
         margin: EdgeInsets.symmetric(
           horizontal: withOutMargin ? 0 : 30.w,
         ),
         decoration: BoxDecoration(
           color: Colors.grey[300],
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
         ),
       ),
     );

@@ -6,7 +6,7 @@ part 'restaurant.g.dart';
 @freezed
 abstract class Restaurant with _$Restaurant {
   const factory Restaurant({
-    @JsonKey(name: 'cover_photo_full_url') required String coverPhotoFullUrl,
+    @JsonKey(name: 'logo_full_url') required String logoFullUrl,
     @JsonKey(name: 'delivery_fee') required String deliveryFee,
     @JsonKey(name: 'rating_count') required int ratingCount,
     required String name,

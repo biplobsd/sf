@@ -29,12 +29,6 @@ void main() async {
     ]);
   }
 
-  // // Supabase
-  // await Supabase.initialize(
-  //   url: kDebugMode ? EnvDev.supabaseUrl : Env.supabaseUrl,
-  //   anonKey: kDebugMode EnvDev.supabaseAnonKey : Env.supabaseAnonKey,
-  // );
-
   await ScreenUtil.ensureScreenSize();
 
   runApp(
@@ -68,9 +62,8 @@ class MainApp extends ConsumerWidget {
           context,
           minTextAdapt: true,
         );
-        return OfflineContainer(
-          child: child,
-        );
+        ScreenUtil.enableScale(enableWH: () => false, enableText: () => false);
+        return OfflineContainer(child: child);
       },
     );
   }

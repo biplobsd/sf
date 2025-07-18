@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sf/features/home/ui/widgets/section_header.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -19,25 +20,25 @@ class FoodCampaignShimmer extends StatelessWidget {
             onPressedViewAll: () {},
           ),
           SizedBox(
-            height: 100,
+            height: 100.h,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: 3,
-              padding: const EdgeInsets.symmetric(horizontal: 8),
+              padding: EdgeInsets.symmetric(horizontal: 8.w),
               itemBuilder: (context, index) {
                 return Container(
-                  width: 220,
-                  margin: const EdgeInsets.only(right: 16, bottom: 20),
+                  width: 220.w,
+                  margin: EdgeInsets.only(right: 16.w, bottom: 20.h),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.black.withValues(
                           alpha: 0.1,
                         ),
-                        blurRadius: 8,
-                        offset: const Offset(0, 4),
+                        blurRadius: 8.r,
+                        offset: Offset(0, 4.h),
                       ),
                     ],
                   ),
@@ -46,26 +47,24 @@ class FoodCampaignShimmer extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Food Image
                           Container(
-                            height: 80,
-                            width: 70,
-                            margin: const EdgeInsets.all(3),
+                            height: 80.h,
+                            width: 70.w,
+                            margin: EdgeInsets.all(3.r),
                             decoration: BoxDecoration(
                               color: Colors.grey[200],
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.r),
                             ),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.r),
                               child: const BannerShimmer(withOutMargin: true),
                             ),
                           ),
-                          // Food Details
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
-                                vertical: 6,
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 6.w,
+                                vertical: 6.h,
                               ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -77,7 +76,7 @@ class FoodCampaignShimmer extends StatelessWidget {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  const SizedBox(height: 1),
+                                  SizedBox(height: 1.h),
                                   Expanded(
                                     child: Text(
                                       'Restaurant Name',
@@ -89,7 +88,6 @@ class FoodCampaignShimmer extends StatelessWidget {
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),
-                                  // Star Rating
                                   Row(
                                     children: List.generate(5, (starIndex) {
                                       return Icon(
@@ -97,11 +95,10 @@ class FoodCampaignShimmer extends StatelessWidget {
                                         color: starIndex < 4
                                             ? Colors.green
                                             : Colors.grey[300],
-                                        size: 12,
+                                        size: 12.sp,
                                       );
                                     }),
                                   ),
-                                  // Price Row
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
@@ -127,22 +124,21 @@ class FoodCampaignShimmer extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // Discount Badge
                       Align(
                         alignment: Alignment.topLeft,
                         child: Container(
-                          margin: const EdgeInsets.only(top: 16),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 2,
-                            vertical: 4,
+                          margin: EdgeInsets.only(top: 16.h),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 2.w,
+                            vertical: 4.h,
                           ),
                           decoration: BoxDecoration(
                             color: Colors.grey.shade400.withValues(
                               alpha: 0.3,
                             ),
                             borderRadius: BorderRadius.only(
-                              topRight: Radius.circular(5),
-                              bottomRight: Radius.circular(5),
+                              topRight: Radius.circular(5.r),
+                              bottomRight: Radius.circular(5.r),
                             ),
                           ),
                           child: Text(
@@ -154,25 +150,24 @@ class FoodCampaignShimmer extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // Add Button
                       Align(
                         alignment: Alignment.bottomRight,
                         child: IconButton(
                           style: ButtonStyle(
                             padding: WidgetStateProperty.all<EdgeInsets>(
-                              const EdgeInsets.all(8),
+                              EdgeInsets.all(8.r),
                             ),
                             minimumSize: WidgetStateProperty.all<Size>(
-                              const Size(0, 0),
+                              Size(0, 0),
                             ),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
                           padding: EdgeInsets.zero,
                           onPressed: () {},
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.add_outlined,
                             color: Colors.black,
-                            size: 25,
+                            size: 25.sp,
                           ),
                         ),
                       ),

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sf/features/home/ui/view_model/get_products_view_model.dart';
 
 import '../../../../theme/app_theme.dart';
@@ -48,47 +49,46 @@ class _PopularFoodNearbySectionState
                 onPressedViewAll: () {},
               ),
               SizedBox(
-                height: 190,
+                height: 145.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: products.length,
-                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
                   itemBuilder: (context, index) {
                     final product = products[index];
                     return Container(
-                      width: 160,
-                      margin: EdgeInsets.only(right: 16, bottom: 10),
+                      width: 140.w,
+                      margin: EdgeInsets.only(right: 16.w, bottom: 10.h),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(12.r),
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black.withValues(
                               alpha: 0.1,
                             ),
-                            blurRadius: 8,
-                            offset: Offset(0, 4),
+                            blurRadius: 8.r,
+                            offset: Offset(0, 4.h),
                           ),
                         ],
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Food Image
                           Container(
-                            height: 100,
+                            height: 70.h,
                             width: double.infinity,
                             decoration: BoxDecoration(
                               color: Colors.grey[200],
                               borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(12),
-                                topRight: Radius.circular(12),
+                                topLeft: Radius.circular(12.r),
+                                topRight: Radius.circular(12.r),
                               ),
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(12),
-                                topRight: Radius.circular(12),
+                                topLeft: Radius.circular(12.r),
+                                topRight: Radius.circular(12.r),
                               ),
                               child: CachedNetworkImage(
                                 imageUrl: product.imageFullUrl,
@@ -103,9 +103,8 @@ class _PopularFoodNearbySectionState
                               ),
                             ),
                           ),
-                          // Food Details
                           Padding(
-                            padding: EdgeInsets.all(12),
+                            padding: EdgeInsets.all(7.r),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -118,7 +117,7 @@ class _PopularFoodNearbySectionState
                                 gap0_1,
                                 Text(
                                   product.restaurantName,
-                                  style: AppTheme.bodySmall10.copyWith(
+                                  style: AppTheme.bodySmall8.copyWith(
                                     color: Colors.grey[600],
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -139,7 +138,7 @@ class _PopularFoodNearbySectionState
                                         Icon(
                                           Icons.star,
                                           color: Colors.green,
-                                          size: 12,
+                                          size: 12.sp,
                                         ),
                                         gap0_1,
                                         Text(

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:sf/features/home/ui/view_model/get_categories_view_model.dart';
 
 import '../../../../theme/app_theme.dart';
@@ -46,35 +47,37 @@ class _CategoriesSectionState extends ConsumerState<CategoriesSection> {
                 onPressedViewAll: () {},
               ),
               SizedBox(
-                height: 80,
+                height: 70.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: categories.length,
                   itemBuilder: (context, index) {
                     final category = categories[index];
                     return SizedBox(
-                      width: 70,
+                      width: 70.w,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            width: 50,
-                            height: 50,
+                            width: 50.w,
+                            height: 50.h,
                             decoration: BoxDecoration(
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(12),
+                              borderRadius: BorderRadius.circular(12.r),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withValues(alpha: 0.15),
-                                  blurRadius: 4,
-                                  offset: Offset(0, 2),
+                                  blurRadius: 4.r,
+                                  offset: Offset(0, 2.h),
                                 ),
                               ],
                             ),
                             child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(8.r),
                               child: Center(
                                 child: CachedNetworkImage(
+                                  width: 50.w,
+                                  height: 50.h,
                                   imageUrl: category.imageFullUrl,
                                   fit: BoxFit.cover,
                                   placeholder: (context, url) => BannerShimmer(

@@ -112,7 +112,7 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
     if (_restaurantsData.isEmpty && !_isLoading) {
       return SliverToBoxAdapter(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 20.sp),
+          margin: EdgeInsets.symmetric(horizontal: 20.w),
           child: const CommonEmptyData(),
         ),
       );
@@ -125,8 +125,8 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
           (context, index) {
             if (index == _restaurantsData.length) {
               return _isLoading || _needsMoreContent
-                  ? const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 16.0),
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(vertical: 16.h),
                       child: Center(child: CircularProgressIndicator()),
                     )
                   : const SizedBox.shrink();
@@ -134,38 +134,39 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
 
             final restaurant = _restaurantsData[index];
             return Container(
-              margin: EdgeInsets.only(right: 16, bottom: 15),
+              margin: EdgeInsets.only(bottom: 10.h),
               padding: EdgeInsets.only(right: 5.w),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(12.r),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withValues(
                       alpha: 0.1,
                     ),
-                    blurRadius: 8,
-                    offset: Offset(0, 4),
+                    blurRadius: 8.r,
+                    offset: Offset(0, 4.h),
                   ),
                 ],
               ),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Food Image
                   Container(
-                    height: 70,
-                    width: 80,
-                    margin: EdgeInsets.all(3),
+                    height: 70.h,
+                    width: 80.w,
+                    margin: EdgeInsets.all(3.r),
                     decoration: BoxDecoration(
                       color: Colors.grey[200],
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.r),
                     ),
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.r),
                       child: Center(
                         child: CachedNetworkImage(
-                          imageUrl: restaurant.coverPhotoFullUrl,
+                          height: 70.h,
+                          width: 80.w,
+                          imageUrl: restaurant.logoFullUrl,
                           fit: BoxFit.cover,
                           placeholder: (context, url) => BannerShimmer(
                             withOutMargin: true,
@@ -177,17 +178,16 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
                       ),
                     ),
                   ),
-                  // Food Details
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 6,
-                        vertical: 6,
+                        horizontal: 6.w,
+                        vertical: 6.h,
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 1,
+                        spacing: 1.h,
                         children: [
                           Text(
                             restaurant.name,
@@ -212,13 +212,15 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
                                     starIndex < restaurant.ratingCount.round()
                                         ? Colors.green
                                         : Colors.grey[300],
-                                size: 12,
+                                size: 12.sp,
                               );
                             }),
                           ),
                           Text(
-                            '\$${restaurant.deliveryFee}',
-                            style: AppTheme.titleTiny12,
+                            restaurant.address,
+                            style: AppTheme.bodySmall10,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
@@ -230,7 +232,7 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
                       IconButton(
                         style: ButtonStyle(
                           padding: WidgetStateProperty.all<EdgeInsets>(
-                            EdgeInsets.all(5),
+                            EdgeInsets.all(5.r),
                           ),
                           minimumSize: WidgetStateProperty.all<Size>(
                             Size(0, 0),
@@ -242,13 +244,13 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
                         icon: Icon(
                           Icons.favorite_border_outlined,
                           color: Colors.grey.shade400,
-                          size: 20,
+                          size: 20.sp,
                         ),
                       ),
                       IconButton(
                         style: ButtonStyle(
                           padding: WidgetStateProperty.all<EdgeInsets>(
-                            EdgeInsets.all(5),
+                            EdgeInsets.all(5.r),
                           ),
                           minimumSize: WidgetStateProperty.all<Size>(
                             Size(0, 0),
@@ -260,7 +262,7 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
                         icon: Icon(
                           Icons.add_outlined,
                           color: Colors.black87,
-                          size: 20,
+                          size: 20.sp,
                         ),
                       )
                     ],

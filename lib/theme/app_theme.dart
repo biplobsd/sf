@@ -97,6 +97,11 @@ class AppTheme {
     fontWeight: FontWeight.w400,
   );
 
+  static final bodySmall8 = GoogleFonts.hindSiliguri(
+    fontSize: 8.sp,
+    fontWeight: FontWeight.w400,
+  );
+
   static final bodySmall12Colored = GoogleFonts.hindSiliguri(
       fontSize: 12.sp,
       fontWeight: FontWeight.w400,
