@@ -15,6 +15,24 @@ Multi Restaurant - Food Delivery App with Flutter and Dart, integrating with Lar
 - **Web App**: [biplobsd.me/sf](https://biplobsd.me/sf)
 - **Mobile App**: [Download APK](https://github.com/biplobsd/sf/releases/latest/download/sf.apk)
 
+## 📱 Screenshots
+
+| Splash                                                     | Home                                       |
+|------------------------------------------------------------|--------------------------------------------|
+| ![Splash](/screenshots/splash.jpg)                         | ![Home](/screenshots/home.jpg)             |
+
+| Loading                              | Error                            |
+|--------------------------------------|----------------------------------|
+| ![Loading](/screenshots/loading.jpg) | ![Error](/screenshots/error.jpg) |
+
+| Under Construction                                         | Web Home                          |
+|------------------------------------------------------------|-----------------------------------|
+| ![Under Construction](/screenshots/under_construction.jpg) | ![Web Home](/screenshots/web.png) |
+
+## 🎥 Video Demo
+
+<video src="/screenshots/sf-demo.mp4" controls width="100%"></video>
+
 ## 🔧 Tech Stack
 
 - **Framework**: Flutter for cross-platform mobile development
@@ -124,6 +142,12 @@ flutter run
 
 # For release mode
 flutter run --release
+
+# For web
+flutter run -d chrome
+
+# or for release mode web
+flutter run -d chrome --release
 ```
 
 ## 📱 Building for Production
