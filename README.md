@@ -31,7 +31,7 @@ Multi Restaurant - Food Delivery App with Flutter and Dart, integrating with Lar
 
 ## 🎥 Video Demo
 
-<video src="/screenshots/sf-demo.mp4" controls width="100%"></video>
+https://github.com/user-attachments/assets/c759e60c-072d-42bb-bc85-0c9b41ad221f
 
 ## 🔧 Tech Stack
 
