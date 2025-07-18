@@ -1,0 +1,97 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v[0-9].[0-9]+.[0-9]+"       # e.g. v1.0.0
+      - "v[0-9].[0-9]+.[0-9]+\\+[0-9]+"  # e.g. v1.0.6+4
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    name: 🤖 Build Android App
+
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: ☕️ Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: gradle
+
+      - name: 🛠️ Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.32.6'
+
+      - name: 📦 Install dependencies
+        run: flutter pub get
+
+      - name: 🧠 Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: 📦 Build APK
+        run: flutter build apk --release
+
+      - name: 📦 Build AAB
+        run: flutter build appbundle --release
+
+      - name: 📁 Rename Release Files
+        run: |
+          mkdir -p release_files
+          cp build/app/outputs/apk/release/app-release.apk release_files/sf.apk
+          cp build/app/outputs/bundle/release/app-release.aab release_files/sf.aab
+
+      - name: 🚀 Upload Android Files to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release_files/*
+          name: Release ${{ github.ref_name }}
+          body: |
+            ✅ Android build completed.
+            📦 APK & AAB generated and uploaded.
+          generate_release_notes: true
+
+
+  build-web:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    name: 🌐 Build and Deploy Flutter Web
+
+    steps:
+      - name: 📚 Git Checkout
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: '3.32.6'
+
+      - name: 📦 Install dependencies
+        run: flutter pub get
+
+      - name: 🧠 Generate code
+        run: dart run build_runner build --delete-conflicting-outputs
+
+      - name: 🌐 Build Flutter Web
+        run: flutter build web --release
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
+          publish_branch: gh-pages
