@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../constants/assets.dart';
@@ -15,8 +16,8 @@ class Loading extends StatelessWidget {
       child: Center(
         child: Lottie.asset(
           Assets.loading,
-          width: 120,
-          height: 120,
+          width: 120.w,
+          height: 120.h,
         ),
       ),
     );

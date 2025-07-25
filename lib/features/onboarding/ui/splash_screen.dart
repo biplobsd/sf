@@ -22,8 +22,13 @@ class SplashScreen extends ConsumerWidget {
   }
 
   Future<void> _checkLoginStatus(WidgetRef ref, BuildContext context) async {
+    // Simulate a network call or some initialization logic
     await Future.delayed(const Duration(seconds: 1));
+
+    // Here you would typically check if the user is logged in or not.
     if (!context.mounted) return;
+
+    // For demonstration, let's assume the user is not logged in.
     context.pushReplacement(Routes.home);
   }
 }

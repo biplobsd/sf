@@ -14,10 +14,10 @@ class LoadingLogo extends StatefulWidget {
   final Color? bgColor;
 
   @override
-  _LoadingLogoState createState() => _LoadingLogoState();
+  LoadingLogoState createState() => LoadingLogoState();
 }
 
-class _LoadingLogoState extends State<LoadingLogo>
+class LoadingLogoState extends State<LoadingLogo>
     with SingleTickerProviderStateMixin {
   late AnimationController _zoomController;
   late Animation<double> _zoomAnimation;
@@ -26,13 +26,11 @@ class _LoadingLogoState extends State<LoadingLogo>
   void initState() {
     super.initState();
 
-    // Initialize the animation controller
     _zoomController = AnimationController(
-      duration: const Duration(seconds: 2), // Slow zoom over 2 seconds
+      duration: const Duration(seconds: 2),
       vsync: this,
     );
 
-    // Create a curved animation for a smooth zoom effect
     _zoomAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
       CurvedAnimation(
         parent: _zoomController,
@@ -40,13 +38,11 @@ class _LoadingLogoState extends State<LoadingLogo>
       ),
     );
 
-    // Start the animation when the widget is first created
     _zoomController.forward();
   }
 
   @override
   void dispose() {
-    // Always dispose of the controller when no longer needed
     _zoomController.dispose();
     super.dispose();
   }
@@ -67,7 +63,6 @@ class _LoadingLogoState extends State<LoadingLogo>
             ),
             child: Stack(
               children: [
-                // Wrap the logo with ScaleTransition for zoom effect
                 Align(
                   alignment: Alignment.center,
                   child: ScaleTransition(
@@ -84,7 +79,7 @@ class _LoadingLogoState extends State<LoadingLogo>
                     padding: EdgeInsets.only(top: 110.sp),
                     child: Lottie.asset(
                       Assets.loading,
-                      width: 60,
+                      width: 60.w,
                       delegates: LottieDelegates(
                         values: [
                           ValueDelegate.color(

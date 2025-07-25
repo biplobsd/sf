@@ -18,32 +18,27 @@ class UnderConstructionScreen extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Construction Icon
             Icon(
               Icons.construction,
               size: 80.h,
             ),
             gap1,
-
             Text(
               'Under Construction',
               style: AppTheme.headLineLarge32Colored,
             ),
             gap1,
-
             Text(
               '$screenName is being built',
               style: AppTheme.bodyMedium14,
               textAlign: TextAlign.center,
             ),
             gap2,
-
             SizedBox(
               width: 200.w,
               child: LinearProgressIndicator(),
             ),
             gap0_5,
-
             Text(
               'Coming Soon!',
               style: AppTheme.bodySmall12,

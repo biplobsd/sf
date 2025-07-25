@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sf/features/common/ui/under_construction_screen.dart';
-import 'package:sf/features/home_layout/ui/view_model/change_screen_view_model.dart';
 
-import '../../../extensions/build_context_extension.dart';
 import '../../../theme/app_colors.dart';
+import '../../common/ui/under_construction_screen.dart';
 import '../../home/ui/home_screen.dart';
+import 'view_model/change_screen_view_model.dart';
 
 class HomeLayoutScreen extends ConsumerStatefulWidget {
   const HomeLayoutScreen({super.key});
@@ -22,10 +21,7 @@ class _HomeLayoutScreenState extends ConsumerState<HomeLayoutScreen> {
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(
-      initialPage: 0,
-      viewportFraction: 1.0,
-    );
+    _pageController = PageController(initialPage: 0);
   }
 
   @override
@@ -51,13 +47,8 @@ class _HomeLayoutScreenState extends ConsumerState<HomeLayoutScreen> {
   @override
   Widget build(BuildContext context) {
     final selectedColor = AppColors.watermelon100;
-    final unselectedColor =
-        context.isDarkMode ? AppColors.mono40 : AppColors.mono60;
-    final borderColor = context.isDarkMode
-        ? AppColors.blueberry20.withAlpha(10)
-        : AppColors.blueberry20.withAlpha(150);
-    final backgroundColor =
-        context.isDarkMode ? AppColors.mono100 : AppColors.mono0;
+    final unselectedColor = AppColors.mono60;
+    final backgroundColor = AppColors.mono0;
 
     ref.listen(changeScreenViewModelProvider, (previous, next) async {
       if (next is AsyncData) {
@@ -74,7 +65,7 @@ class _HomeLayoutScreenState extends ConsumerState<HomeLayoutScreen> {
         margin: EdgeInsets.only(top: 15.h),
         child: FloatingActionButton(
           elevation: 0,
-          onPressed: () => _changePage(2), // Navigate to Cart
+          onPressed: () => _changePage(2),
           backgroundColor: selectedColor,
           shape: CircleBorder(),
           child: Container(
@@ -98,7 +89,7 @@ class _HomeLayoutScreenState extends ConsumerState<HomeLayoutScreen> {
           color: backgroundColor,
           border: Border(
             top: BorderSide(
-              color: borderColor,
+              color: AppColors.blueberry20.withAlpha(150),
               width: 1.w,
             ),
           ),

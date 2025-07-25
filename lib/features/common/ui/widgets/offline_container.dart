@@ -2,14 +2,15 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sf/features/home/ui/providers/home_data_refetch_provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../constants/constants.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../../theme/app_theme.dart';
+import '../../../../theme/gaps.dart';
+import '../../../home/ui/providers/home_data_refetch_provider.dart';
 
 class OfflineContainer extends ConsumerStatefulWidget {
   final Widget? child;
@@ -43,10 +44,6 @@ class _OfflineContainerState extends ConsumerState<OfflineContainer> {
     setState(() {
       _isOffline = result.contains(ConnectivityResult.none);
     });
-    if (kDebugMode) {
-      debugPrint(
-          '${Constants.tag} [_OfflineContainerState._updateConnectionStatus] $result => ${_isOffline ? 'offline' : 'online'}');
-    }
 
     if (!_isOffline) {
       ref.read(homeDataRefetchProviderProvider.notifier).now();
@@ -61,7 +58,7 @@ class _OfflineContainerState extends ConsumerState<OfflineContainer> {
       body: Stack(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 20),
+            padding: EdgeInsets.only(top: 20.h),
             child: widget.child,
           ),
           Positioned(
@@ -70,19 +67,19 @@ class _OfflineContainerState extends ConsumerState<OfflineContainer> {
             right: 0,
             child: Container(
               padding: EdgeInsets.only(
-                top: MediaQuery.paddingOf(context).top + 2,
-                bottom: 2,
+                top: MediaQuery.paddingOf(context).top + 2.h,
+                bottom: 2.h,
               ),
               color: AppColors.mono60,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
-                    Icons.signal_wifi_connected_no_internet_4,
-                    size: 16,
+                  Icon(
+                    FontAwesomeIcons.wifi,
+                    size: 16.r,
                     color: AppColors.mono0,
                   ),
-                  const SizedBox(width: 8),
+                  gap1,
                   Text(
                     'offline',
                     style: AppTheme.bodyMedium14.copyWith(

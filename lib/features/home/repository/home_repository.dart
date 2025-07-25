@@ -87,7 +87,7 @@ class HomeRepository {
       return restaurants;
     } catch (e) {
       // Handle exceptions as needed
-      return [];
+      rethrow;
     }
   }
 }
