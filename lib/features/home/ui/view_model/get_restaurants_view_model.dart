@@ -16,7 +16,7 @@ class GetRestaurantsViewModel extends _$GetRestaurantsViewModel {
   }
 
   Future<void> getAll({
-    int limit = 2,
+    int limit = 3,
     bool isReset = false,
   }) async {
     if (isReset) {

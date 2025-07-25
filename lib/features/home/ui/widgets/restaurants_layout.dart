@@ -59,8 +59,8 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(getRestaurantsViewModelProvider.notifier).getAll(
-        isReset: true,
-      );
+            isReset: true,
+          );
     });
   }
 
@@ -129,12 +129,15 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
                       padding: EdgeInsets.symmetric(vertical: 16.h),
                       child: Center(child: CircularProgressIndicator()),
                     )
-                  : Text(
-                      'No more restaurants available',
-                      style: AppTheme.bodyMedium14.copyWith(
-                        color: Colors.grey.shade600,
+                  : Padding(
+                      padding: EdgeInsets.only(bottom: 30.h),
+                      child: Text(
+                        'No more restaurants available',
+                        style: AppTheme.bodyMedium14.copyWith(
+                          color: Colors.grey.shade600,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
-                      textAlign: TextAlign.center,
                     );
             }
 
