@@ -12,16 +12,16 @@ const RESOURCES = {"assets/AssetManifest.bin": "0b00585560fd7e48c0bc8bc0998df58e
 "assets/shaders/ink_sparkle.frag": "ecc85a2e95f5e9f53123dcaf8cb9b6ce",
 "assets/FontManifest.json": "5a32d4310a6f5d9a6b651e75ba0d7372",
 "assets/AssetManifest.json": "4d7849d12640eccc804633fbb439b4b4",
-"assets/fonts/MaterialIcons-Regular.otf": "ed1a414fe343af14b6a22af9d98144af",
+"assets/fonts/MaterialIcons-Regular.otf": "d5c5b4e31771904cda68f2904c8fe2cc",
 "assets/AssetManifest.bin.json": "cd7b813ac99576890b5d9d7d00b35ab1",
 "assets/NOTICES": "9719282c248647c5933bbd072e9029ab",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "33b7d9392238c04c131b6ce224e13711",
-"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "ea5face4c3a416869717860a4339e838",
+"assets/packages/font_awesome_flutter/lib/fonts/fa-solid-900.ttf": "bf05db4a669f6ca2880421fa80bd2f17",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-regular-400.ttf": "3ca5dc7621921b901d513cc1ce23788c",
 "assets/packages/font_awesome_flutter/lib/fonts/fa-brands-400.ttf": "4769f3245a24c1fa9965f113ea85ec2a",
 "version.json": "460bc6529e705978f265a366161ced0c",
 "manifest.json": "267d5ebe1bdd2a159993177fdc876b29",
-"flutter_bootstrap.js": "bdea7d519a97aec3b7d67bded637decb",
+"flutter_bootstrap.js": "3186db8c29012aa5be2f0b9424bea839",
 "canvaskit/skwasm.wasm": "39dd80367a4e71582d234948adc521c0",
 "canvaskit/canvaskit.wasm": "7a3f4ae7d65fc1de6a6e7ddd3224bc93",
 "canvaskit/skwasm.js.symbols": "e72c79950c8a8483d826a7f0560573a1",
@@ -39,7 +39,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "0b00585560fd7e48c0bc8bc0998df58e
 "icons/Icon-192.png": "d87767a6141fbab6e7a3b1051494b770",
 "icons/Icon-maskable-512.png": "8c84ef2e341b8954266b107352ff859a",
 "icons/Icon-maskable-192.png": "d87767a6141fbab6e7a3b1051494b770",
-"main.dart.js": "50efa557f0511da1ca385f3d3ed14f1f"};
+"main.dart.js": "3e4dca841836c6bf4d9adc5d749316df"};
 // The application shell files that are downloaded before a service worker can
 // start.
 const CORE = ["main.dart.js",
