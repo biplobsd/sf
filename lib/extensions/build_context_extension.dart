@@ -8,6 +8,11 @@ extension ThemeModeExtension on BuildContext {
 
   ThemeData get lightTheme => ThemeData.light().copyWith(
         scaffoldBackgroundColor: AppColors.background,
+        floatingActionButtonTheme:
+            Theme.of(this).floatingActionButtonTheme.copyWith(
+                  backgroundColor: AppColors.watermelon100,
+                  foregroundColor: AppColors.mono0,
+                ),
         colorScheme: Theme.of(this).colorScheme.copyWith(
               brightness: Brightness.light,
               primary: AppColors.watermelon100,
