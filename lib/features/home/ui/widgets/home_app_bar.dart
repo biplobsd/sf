@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:sf/theme/app_theme.dart';
 
+import '../../../../theme/app_colors.dart';
+import '../../../../theme/app_theme.dart';
 import '../../../../theme/gaps.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -16,7 +17,7 @@ class HomeAppBar extends StatelessWidget {
       pinned: false,
       floating: false,
       snap: false,
-      backgroundColor: const Color(0xFFFDFDFD),
+      backgroundColor: AppColors.background,
       elevation: 0,
       expandedHeight: 100.sp,
       flexibleSpace: SafeArea(

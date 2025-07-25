@@ -3,9 +3,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sf/features/home/ui/view_model/get_banners_view_model.dart';
 
 import '../../../../theme/gaps.dart';
+import '../view_model/get_banners_view_model.dart';
 import 'banner_shimmer.dart';
 import 'shimmer_error.dart';
 

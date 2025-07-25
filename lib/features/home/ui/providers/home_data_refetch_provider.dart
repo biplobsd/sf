@@ -1,9 +1,10 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:sf/features/home/ui/view_model/get_banners_view_model.dart';
-import 'package:sf/features/home/ui/view_model/get_campaigns_view_model.dart';
-import 'package:sf/features/home/ui/view_model/get_categories_view_model.dart';
-import 'package:sf/features/home/ui/view_model/get_products_view_model.dart';
-import 'package:sf/features/home/ui/view_model/get_restaurants_view_model.dart';
+
+import '../view_model/get_banners_view_model.dart';
+import '../view_model/get_campaigns_view_model.dart';
+import '../view_model/get_categories_view_model.dart';
+import '../view_model/get_products_view_model.dart';
+import '../view_model/get_restaurants_view_model.dart';
 
 part 'home_data_refetch_provider.g.dart';
 

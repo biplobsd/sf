@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sf/features/home/ui/widgets/section_header.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../theme/app_theme.dart';
 import '../../../../theme/gaps.dart';
 import 'banner_shimmer.dart';
+import 'section_header.dart';
 
 class PopularFoodNearbyShimmer extends StatelessWidget {
   const PopularFoodNearbyShimmer({super.key});

@@ -2,11 +2,11 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sf/features/home/ui/widgets/section_header.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../../theme/gaps.dart';
 import 'banner_shimmer.dart';
+import 'section_header.dart';
 
 class CategoriesShimmer extends StatelessWidget {
   const CategoriesShimmer({super.key});

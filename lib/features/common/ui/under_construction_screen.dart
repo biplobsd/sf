@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sf/features/home_layout/ui/view_model/change_screen_view_model.dart';
-import 'package:sf/theme/app_theme.dart';
 
+import '../../../theme/app_theme.dart';
 import '../../../theme/gaps.dart';
+import '../../home_layout/ui/view_model/change_screen_view_model.dart';
 
 class UnderConstructionScreen extends ConsumerWidget {
   final String screenName;

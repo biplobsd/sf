@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:sf/features/home/repository/home_repository.dart';
 
 import '../../model/banners.dart';
+import '../../repository/home_repository.dart';
 import '../state/banners_state.dart';
 
 part 'get_banners_view_model.g.dart';

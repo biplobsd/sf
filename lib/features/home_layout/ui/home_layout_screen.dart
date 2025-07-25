@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:sf/features/home_layout/ui/view_model/change_screen_current_index_view_model.dart';
 
 import '../../common/ui/under_construction_screen.dart';
 import '../../home/ui/home_screen.dart';
 import '../widgets/bottom_navigation.dart';
 import '../widgets/cart_button.dart';
+import 'view_model/change_screen_current_index_view_model.dart';
 import 'view_model/change_screen_view_model.dart';
 
 class HomeLayoutScreen extends ConsumerStatefulWidget {

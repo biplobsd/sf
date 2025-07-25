@@ -1,6 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:sf/features/home/repository/home_repository.dart';
 
+import '../../repository/home_repository.dart';
 import '../state/categories_state.dart';
 
 part 'get_categories_view_model.g.dart';

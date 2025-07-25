@@ -11,6 +11,7 @@ void main() async {
 
   runApp(
     ProviderScope(
+      observers: [],
       child: const MainApp(),
     ),
   );

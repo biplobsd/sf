@@ -2,10 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:sf/features/home/ui/view_model/get_categories_view_model.dart';
 
 import '../../../../theme/app_theme.dart';
 import '../../../../theme/gaps.dart';
+import '../view_model/get_categories_view_model.dart';
 import 'banner_shimmer.dart';
 import 'categories_shimmer.dart';
 import 'section_header.dart';
