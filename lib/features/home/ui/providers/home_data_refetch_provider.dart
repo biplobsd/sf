@@ -18,9 +18,7 @@ class HomeDataRefetchProvider extends _$HomeDataRefetchProvider {
       ref.read(getCategoriesViewModelProvider.notifier).getCategoriesList(),
       ref.read(getProductsViewModelProvider.notifier).getProductList(),
       ref.read(getCampaignsViewModelProvider.notifier).getCampaignsList(),
-      ref
-          .read(getRestaurantsViewModelProvider.notifier)
-          .getAll(isRefresh: true),
+      ref.read(getRestaurantsViewModelProvider.notifier).getAll(isReset: true),
     ]);
   }
 }

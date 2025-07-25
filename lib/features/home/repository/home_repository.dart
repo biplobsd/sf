@@ -7,7 +7,7 @@ import '../model/banners.dart';
 import '../model/campaign.dart';
 import '../model/category.dart';
 import '../model/products.dart';
-import '../model/restaurant.dart';
+import '../model/restaurants.dart';
 
 part 'home_repository.g.dart';
 
@@ -69,7 +69,7 @@ class HomeRepository {
     }
   }
 
-  Future<List<Restaurant>> getRestaurants({
+  Future<Restaurants> getRestaurants({
     int offset = 1,
     int limit = 10,
   }) async {
@@ -80,11 +80,7 @@ class HomeRepository {
         'limit': limit,
       });
 
-      final restaurants = (response['restaurants'] as List)
-          .map((json) => Restaurant.fromJson(json))
-          .toList();
-
-      return restaurants;
+      return Restaurants.fromJson(response);
     } catch (e) {
       // Handle exceptions as needed
       rethrow;

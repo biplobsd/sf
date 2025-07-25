@@ -17,18 +17,11 @@ class GetRestaurantsViewModel extends _$GetRestaurantsViewModel {
 
   Future<void> getAll({
     int limit = 2,
-    bool isRefresh = false,
     bool isReset = false,
   }) async {
     if (isReset) {
       reset();
     }
-
-    if (isRefresh) {
-      _currentOffset = 1;
-      _hasMore = true;
-    }
-    if (!_hasMore && !isRefresh) return;
 
     state = const AsyncValue.loading();
     try {
@@ -36,11 +29,12 @@ class GetRestaurantsViewModel extends _$GetRestaurantsViewModel {
           .read(homeRepositoryProvider)
           .getRestaurants(offset: _currentOffset, limit: limit);
 
-      if (result.length < limit) _hasMore = false;
+      final int totalPages = (result.totalSize / limit).ceil();
+      _hasMore = _currentOffset < totalPages;
 
       state = AsyncData(
         RestaurantsState(
-          data: result,
+          data: result.restaurants,
           hasMore: _hasMore,
           currentOffset: _currentOffset,
         ),
@@ -50,12 +44,6 @@ class GetRestaurantsViewModel extends _$GetRestaurantsViewModel {
     } catch (error, stack) {
       state = AsyncError(error, stack);
     }
-  }
-
-  Future<void> refresh() async {
-    await getAll(
-      isRefresh: true,
-    );
   }
 
   void reset() {

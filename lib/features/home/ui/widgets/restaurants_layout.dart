@@ -56,12 +56,6 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
     super.initState();
 
     widget.scrollController.addListener(_onScroll);
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref.read(getRestaurantsViewModelProvider.notifier).getAll(
-            isReset: true,
-          );
-    });
   }
 
   @override
@@ -129,7 +123,13 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
                       padding: EdgeInsets.symmetric(vertical: 16.h),
                       child: Center(child: CircularProgressIndicator()),
                     )
-                  : const SizedBox.shrink();
+                  : Text(
+                      'No more restaurants available',
+                      style: AppTheme.bodyMedium14.copyWith(
+                        color: Colors.grey.shade600,
+                      ),
+                      textAlign: TextAlign.center,
+                    );
             }
 
             final restaurant = _restaurantsData[index];
@@ -271,7 +271,7 @@ class _RestaurantsLayoutState extends ConsumerState<RestaurantsLayout> {
               ),
             );
           },
-          childCount: _restaurantsData.length + (_hasMoreData ? 1 : 0),
+          childCount: _restaurantsData.length + 1,
         ),
       ),
     );
