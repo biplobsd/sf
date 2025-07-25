@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../../constants/constants.dart';
 import '../../../constants/uris.dart';
 
 part 'api_client.g.dart';
@@ -35,15 +33,6 @@ class ApiClient {
         },
       ),
     );
-
-    _setupInterceptors();
-  }
-
-  void _setupInterceptors() {
-    _dio.interceptors.addAll([
-      _LoggingInterceptor(),
-      _ErrorInterceptor(),
-    ]);
   }
 
   Future<T> get<T>(
@@ -116,41 +105,6 @@ class ApiClient {
       default:
         return UnknownException();
     }
-  }
-}
-
-class _LoggingInterceptor extends Interceptor {
-  @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    debugPrint(
-        '${Constants.tag} REQUEST[${options.method}] => PATH: ${options.path}');
-    debugPrint('${Constants.tag} Headers: ${options.headers}');
-    debugPrint('${Constants.tag} Data: ${options.data}');
-    super.onRequest(options, handler);
-  }
-
-  @override
-  void onResponse(Response response, ResponseInterceptorHandler handler) {
-    debugPrint(
-        '${Constants.tag} RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
-    debugPrint('${Constants.tag} Data: ${response.data}');
-    super.onResponse(response, handler);
-  }
-
-  @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    debugPrint(
-        '${Constants.tag} ERROR[${err.response?.statusCode}] => PATH: ${err.requestOptions.path}');
-    debugPrint('${Constants.tag} Message: ${err.message}');
-    super.onError(err, handler);
-  }
-}
-
-class _ErrorInterceptor extends Interceptor {
-  @override
-  void onError(DioException err, ErrorInterceptorHandler handler) {
-    // Add any global error handling logic here
-    super.onError(err, handler);
   }
 }
 

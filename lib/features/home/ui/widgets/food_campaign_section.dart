@@ -48,7 +48,7 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
                 onPressedViewAll: () {},
               ),
               SizedBox(
-                height: 100.h,
+                height: 90.h,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: campaigns.length,
@@ -57,7 +57,7 @@ class _FoodCampaignSectionState extends ConsumerState<FoodCampaignSection> {
                     final food = campaigns[index];
                     return Container(
                       width: 220.w,
-                      margin: EdgeInsets.only(right: 16.w, bottom: 20.h),
+                      margin: EdgeInsets.only(right: 16.w, bottom: 10.h),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12.r),

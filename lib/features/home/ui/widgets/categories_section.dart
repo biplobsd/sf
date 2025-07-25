@@ -103,6 +103,7 @@ class _CategoriesSectionState extends ConsumerState<CategoriesSection> {
                   },
                 ),
               ),
+              gap1,
             ],
           );
         },
