@@ -35,6 +35,22 @@ class _BannerSliderState extends ConsumerState<BannerSlider> {
     super.dispose();
   }
 
+  double viewportFraction() {
+    final currentWidth = MediaQuery.of(context).size.width;
+
+    if (currentWidth < 640) {
+      return 0.85; // xs: Extra small screens (less than 640px)
+    } else if (currentWidth < 768) {
+      return 0.65; // sm: Small screens (640px to 767px)
+    } else if (currentWidth < 1024) {
+      return 0.45; // md: Medium screens (768px to 1023px)
+    } else if (currentWidth < 1280) {
+      return 0.25; // lg: Large screens (1024px to 1279px)
+    } else {
+      return 0.25; // xl and 2xl: Extra large screens (1280px and above)
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final asyncValue = ref.watch(getBannersViewModelProvider);
@@ -55,7 +71,7 @@ class _BannerSliderState extends ConsumerState<BannerSlider> {
                 options: CarouselOptions(
                   height: 100.sp,
                   aspectRatio: 16 / 9,
-                  viewportFraction: 0.85,
+                  viewportFraction: viewportFraction(),
                   initialPage: 0,
                   enableInfiniteScroll: true,
                   reverse: false,
